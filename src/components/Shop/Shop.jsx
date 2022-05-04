@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ProductCard from "../ProductCard/ProductCard";
 import "./Shop.css";
 
 function Shop() {
@@ -22,7 +23,14 @@ function Shop() {
     fetchProducts();
   }, []);
 
-  return <div className="shop" />;
+  return (
+    <div className="shop">
+      {isFetching && <h1>FETCHING DATA</h1>}
+      {products.map((item) => (
+        <ProductCard key={item.id} product={item} />
+      ))}
+    </div>
+  );
 }
 
 export default Shop;
