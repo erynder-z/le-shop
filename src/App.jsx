@@ -1,20 +1,24 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import Nav from "./components/Nav";
-import Home from "./components/Home";
-import Shop from "./components/Shop";
-import Contact from "./components/Contact";
+import Nav from "./components/Nav/Nav";
+import Home from "./components/Home/Home";
+import Shop from "./components/Shop/Shop";
+import Contact from "./components/Contact/Contact";
+import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 
 function App() {
-  <div className="app">
-    <Nav />
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/search" element={<Shop />} />
-      <Route path="/about" element={<Contact />} />
-    </Routes>
-  </div>;
+  return (
+    <div className="app">
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/cart" element={<ShoppingCart />} />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;
