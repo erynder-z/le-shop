@@ -1,10 +1,24 @@
 import React, { useState, useEffect } from "react";
 import ProductCard from "../ProductCard/ProductCard";
+import Dropdown from "../Dropdown/Dropdown";
 import "./Shop.css";
 
 function Shop() {
+  const options = [
+    { label: "All", value: "All" },
+    { label: "Mens clothing", value: "Mens clothing" },
+    { label: "Jewelry", value: "Jewelry" },
+    { label: "Electronics", value: "Electronics" },
+    { label: "Womens clothing", value: "Womens clothing " },
+  ];
+
   const [products, setProducts] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
+  const [category, setCategory] = useState("all");
+
+  const handleChange = (event) => {
+    setCategory(event.target.value);
+  };
 
   const showProductDetails = (id) => {
     setProducts(() =>
@@ -38,6 +52,15 @@ function Shop() {
 
   return (
     <div className="shop">
+      <div>
+        <Dropdown
+          label="filter by category "
+          options={options}
+          value={category}
+          onChange={handleChange}
+        />
+        <p>Showing: {category}</p>
+      </div>
       {isFetching && <h1>FETCHING DATA</h1>}
       {products.map((item) => (
         <ProductCard
