@@ -6,6 +6,16 @@ function Shop() {
   const [products, setProducts] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
 
+  const showProductDetails = (id) => {
+    setProducts(() =>
+      products.map((product) =>
+        product.id === id
+          ? { ...product, isInView: true }
+          : { ...product, isInView: false }
+      )
+    );
+  };
+
   useEffect(() => {
     // get products-array from API and add isInView-key to every object
     const abortController = new AbortController();
@@ -30,7 +40,11 @@ function Shop() {
     <div className="shop">
       {isFetching && <h1>FETCHING DATA</h1>}
       {products.map((item) => (
-        <ProductCard key={item.id} product={item} />
+        <ProductCard
+          key={item.id}
+          product={item}
+          showProductDetails={showProductDetails}
+        />
       ))}
     </div>
   );
