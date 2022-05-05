@@ -7,26 +7,20 @@ function Shop() {
   const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
+    // get products-array from API and add isInView-key to every object
     const abortController = new AbortController();
-    const fetchProducts = async () => {
-      setIsFetching(true);
-
-      try {
-        const response = await fetch("https://fakestoreapi.com/products", {
-          signal: abortController.signal,
-        });
-
-        const fetchData = await response.json();
-
-        setProducts(fetchData);
+    const url = "https://fakestoreapi.com/products";
+    setIsFetching(true);
+    fetch(url, { signal: abortController.signal })
+      .then((response) => response.json())
+      .then((data) => {
+        const fetchedData = data;
+        setProducts(fetchedData.map((item) => ({ ...item, isInView: false })));
         setIsFetching(false);
-      } catch (error) {
+      })
+      .catch((error) => {
         throw new Error(error);
-      }
-    };
-
-    fetchProducts();
-
+      });
     return () => {
       abortController.abort();
     };
@@ -36,11 +30,7 @@ function Shop() {
     <div className="shop">
       {isFetching && <h1>FETCHING DATA</h1>}
       {products.map((item) => (
-        <ProductCard
-          key={item.id}
-          product={item}
-          /*      onClick={showProductDetails(item.id)} */
-        />
+        <ProductCard key={item.id} product={item} />
       ))}
     </div>
   );
