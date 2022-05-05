@@ -30,6 +30,14 @@ function Shop() {
     );
   };
 
+  const hideProductDetails = (id) => {
+    setProducts(() =>
+      products.map((product) =>
+        product.id === id ? { ...product, isInView: false } : product
+      )
+    );
+  };
+
   useEffect(() => {
     // get products-array from API and add isInView-key to every object
     const abortController = new AbortController();
@@ -67,6 +75,7 @@ function Shop() {
               key={item.id}
               product={item}
               showProductDetails={showProductDetails}
+              hideProductDetails={hideProductDetails}
             />
           ))
         : products
@@ -76,6 +85,7 @@ function Shop() {
                 key={item.id}
                 product={item}
                 showProductDetails={showProductDetails}
+                hideProductDetails={hideProductDetails}
               />
             ))}
     </div>

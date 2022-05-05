@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import "./ProductCard.css";
 
 function ProductCard(props) {
-  const { product, showProductDetails } = props;
+  const { product, showProductDetails, hideProductDetails } = props;
   const formattedPrice = (Math.round(product.price * 100) / 100).toFixed(2);
   return (
     <div
@@ -18,6 +18,23 @@ function ProductCard(props) {
       role="button"
       tabIndex={0}
     >
+      {product.isInView === true && (
+        <div
+          className="closeBtn"
+          onClick={(e) => {
+            hideProductDetails(product.id, e);
+            e.stopPropagation();
+          }}
+          onKeyDown={(e) => {
+            hideProductDetails(product.id, e);
+            e.stopPropagation();
+          }}
+          role="button"
+          tabIndex={0}
+        >
+          &times;
+        </div>
+      )}
       <div className="product-header">
         <h3>{product.title}</h3>
       </div>
@@ -44,6 +61,7 @@ export default ProductCard;
 
 ProductCard.propTypes = {
   showProductDetails: PropTypes.func.isRequired,
+  hideProductDetails: PropTypes.func.isRequired,
   product: PropTypes.shape({
     id: PropTypes.number,
     title: PropTypes.string,

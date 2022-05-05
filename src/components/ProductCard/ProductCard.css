@@ -49,6 +49,13 @@
   height: auto;
 }
 
+.closeBtn {
+  color: crimson;
+  align-self: flex-end;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 768px) {
   .inView {
     width: 80%;
