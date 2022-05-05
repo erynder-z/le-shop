@@ -1,0 +1,21 @@
+.shopping-cart {
+  position: fixed;
+  bottom: 0;
+  right: -33vw;
+  height: 90vh;
+  width: 33vw;
+  background-color: orange;
+  transition: 200ms ease-in-out;
+}
+
+.shopping-cart.show-cart {
+  right: 0;
+  transition: 200ms ease-in-out;
+}
+
+@media only screen and (max-width: 768px) {
+  .shopping-cart {
+    right: -95vw;
+    width: 95vw;
+  }
+}

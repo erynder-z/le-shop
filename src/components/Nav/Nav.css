@@ -29,6 +29,10 @@
   transition: all 0.5s;
 }
 
+.cart-link {
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 768px) {
   nav {
     height: 12vh;
