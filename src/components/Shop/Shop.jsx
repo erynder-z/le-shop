@@ -5,11 +5,11 @@ import "./Shop.css";
 
 function Shop() {
   const options = [
-    { label: "All", value: "All" },
-    { label: "Mens clothing", value: "Mens clothing" },
-    { label: "Jewelry", value: "Jewelry" },
-    { label: "Electronics", value: "Electronics" },
-    { label: "Womens clothing", value: "Womens clothing " },
+    { label: "All", value: "all" },
+    { label: "Mens clothing", value: "men's clothing" },
+    { label: "Jewelery", value: "jewelery" },
+    { label: "Electronics", value: "electronics" },
+    { label: "Womens clothing", value: "women's clothing" },
   ];
 
   const [products, setProducts] = useState([]);
@@ -62,13 +62,23 @@ function Shop() {
         <p>Showing: {category}</p>
       </div>
       {isFetching && <h1>FETCHING DATA</h1>}
-      {products.map((item) => (
-        <ProductCard
-          key={item.id}
-          product={item}
-          showProductDetails={showProductDetails}
-        />
-      ))}
+      {category === "all"
+        ? products.map((item) => (
+            <ProductCard
+              key={item.id}
+              product={item}
+              showProductDetails={showProductDetails}
+            />
+          ))
+        : products
+            .filter((item) => item.category === category.toLowerCase().trim())
+            .map((item) => (
+              <ProductCard
+                key={item.id}
+                product={item}
+                showProductDetails={showProductDetails}
+              />
+            ))}
     </div>
   );
 }
