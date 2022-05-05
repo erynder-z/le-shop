@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import ProductCard from "../ProductCard/ProductCard";
 import Dropdown from "../Dropdown/Dropdown";
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import "./Shop.css";
 
-function Shop() {
+function Shop(props) {
+  const { showCart } = props;
   const options = [
     { label: "All", value: "all" },
     { label: "Mens clothing", value: "men's clothing" },
@@ -66,7 +69,7 @@ function Shop() {
         value={category}
         onChange={handleChange}
       />
-
+      <ShoppingCart showCart={showCart} />
       {isFetching && <h1>FETCHING DATA</h1>}
 
       {category === "all"
@@ -93,3 +96,7 @@ function Shop() {
 }
 
 export default Shop;
+
+Shop.propTypes = {
+  showCart: PropTypes.bool.isRequired,
+};
