@@ -4,16 +4,18 @@ import "./Dropdown.css";
 
 function Dropdown({ label, value, options, onChange }) {
   return (
-    <label htmlFor="categories">
-      {label}
-      <select id="categories" value={value} onChange={onChange}>
-        {options.map((option) => (
-          <option key={option.value.toString()} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
-    </label>
+    <div className="dropdown">
+      <label htmlFor="categories">
+        {label}
+        <select id="categories" value={value} onChange={onChange}>
+          {options.map((option) => (
+            <option key={option.value.toString()} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+      </label>
+    </div>
   );
 }
 

@@ -52,16 +52,15 @@ function Shop() {
 
   return (
     <div className="shop">
-      <div>
-        <Dropdown
-          label="filter by category "
-          options={options}
-          value={category}
-          onChange={handleChange}
-        />
-        <p>Showing: {category}</p>
-      </div>
+      <Dropdown
+        label="filter by category "
+        options={options}
+        value={category}
+        onChange={handleChange}
+      />
+
       {isFetching && <h1>FETCHING DATA</h1>}
+
       {category === "all"
         ? products.map((item) => (
             <ProductCard
