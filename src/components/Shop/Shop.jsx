@@ -23,26 +23,7 @@ function Shop(props) {
     setCategory(event.target.value);
   };
 
-  const showProductDetails = (id) => {
-    setProducts(() =>
-      products.map((product) =>
-        product.id === id
-          ? { ...product, isInView: true }
-          : { ...product, isInView: false }
-      )
-    );
-  };
-
-  const hideProductDetails = (id) => {
-    setProducts(() =>
-      products.map((product) =>
-        product.id === id ? { ...product, isInView: false } : product
-      )
-    );
-  };
-
   useEffect(() => {
-    // get products-array from API and add isInView-key to every object
     const abortController = new AbortController();
     const url = "https://fakestoreapi.com/products";
     setIsFetching(true);
@@ -50,7 +31,7 @@ function Shop(props) {
       .then((response) => response.json())
       .then((data) => {
         const fetchedData = data;
-        setProducts(fetchedData.map((item) => ({ ...item, isInView: false })));
+        setProducts(fetchedData);
         setIsFetching(false);
       })
       .catch((error) => {
@@ -71,26 +52,12 @@ function Shop(props) {
       />
       <ShoppingCart showCart={showCart} />
       {isFetching && <h1>FETCHING DATA</h1>}
-
-      {category === "all"
-        ? products.map((item) => (
-            <ProductCard
-              key={item.id}
-              product={item}
-              showProductDetails={showProductDetails}
-              hideProductDetails={hideProductDetails}
-            />
-          ))
-        : products
-            .filter((item) => item.category === category.toLowerCase().trim())
-            .map((item) => (
-              <ProductCard
-                key={item.id}
-                product={item}
-                showProductDetails={showProductDetails}
-                hideProductDetails={hideProductDetails}
-              />
-            ))}
+      {!isFetching &&
+        (category === "all"
+          ? products.map((item) => <ProductCard key={item.id} product={item} />)
+          : products
+              .filter((item) => item.category === category.toLowerCase().trim())
+              .map((item) => <ProductCard key={item.id} product={item} />))}
     </div>
   );
 }

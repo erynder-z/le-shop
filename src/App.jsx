@@ -5,7 +5,7 @@ import Nav from "./components/Nav/Nav";
 import Home from "./components/Home/Home";
 import Shop from "./components/Shop/Shop";
 import Contact from "./components/Contact/Contact";
-/* import ShoppingCart from "./components/ShoppingCart/ShoppingCart"; */
+import ProductPage from "./components/ProductPage/ProductPage";
 
 function App() {
   const [showCart, setShowCart] = useState(false);
@@ -26,7 +26,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop showCart={showCart} />} />
         <Route path="/contact" element={<Contact />} />
-        {/* <Route path="/cart" element={<ShoppingCart />} /> */}
+        <Route path="/shop/:id" element={<ProductPage />} />
       </Routes>
     </div>
   );
