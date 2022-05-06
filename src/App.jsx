@@ -9,6 +9,11 @@ import ProductPage from "./components/ProductPage/ProductPage";
 
 function App() {
   const [showCart, setShowCart] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
+
+  const addItemToCart = (item) => {
+    setCartItems(() => [...cartItems, item]);
+  };
 
   const toggleShowCart = (e) => {
     if (showCart) {
@@ -24,9 +29,21 @@ function App() {
       <Nav toggleShowCart={toggleShowCart} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/shop" element={<Shop showCart={showCart} />} />
+        <Route
+          path="/shop"
+          element={<Shop showCart={showCart} cartItems={cartItems} />}
+        />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/shop/:id" element={<ProductPage showCart={showCart} />} />
+        <Route
+          path="/shop/:id"
+          element={
+            <ProductPage
+              showCart={showCart}
+              cartItems={cartItems}
+              addItemToCart={addItemToCart}
+            />
+          }
+        />
       </Routes>
     </div>
   );

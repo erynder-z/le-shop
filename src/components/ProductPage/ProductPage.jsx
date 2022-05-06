@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import PropTypes, { shape } from "prop-types";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import "./ProductPage.css";
 
 function ProductPage(props) {
-  const { showCart } = props;
+  const { showCart, cartItems, addItemToCart } = props;
   const [product, setProduct] = useState({
     id: 1,
     title: "...",
@@ -21,6 +22,10 @@ function ProductPage(props) {
   // get id of the item from the route provider
   const { id } = useParams();
   const formattedPrice = (Math.round(product.price * 100) / 100).toFixed(2);
+
+  const passItem = () => {
+    addItemToCart(product);
+  };
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -43,7 +48,7 @@ function ProductPage(props) {
 
   return (
     <div className="product-page">
-      <ShoppingCart showCart={showCart} />
+      <ShoppingCart showCart={showCart} cartItems={cartItems} />
       {isFetching && <h1>FETCHING DATA</h1>}
 
       {!isFetching && (
@@ -65,6 +70,15 @@ function ProductPage(props) {
           <div className="product-price">
             <h4>Price: {formattedPrice}€</h4>
           </div>
+          <button
+            className="addToCartBtn"
+            onClick={passItem}
+            onKeyDown={passItem}
+            type="button"
+            tabIndex={0}
+          >
+            Add to cart
+          </button>
         </div>
       )}
     </div>
@@ -72,3 +86,22 @@ function ProductPage(props) {
 }
 
 export default ProductPage;
+
+ProductPage.propTypes = {
+  showCart: PropTypes.bool.isRequired,
+  cartItems: PropTypes.arrayOf(
+    shape({
+      id: PropTypes.number,
+      title: PropTypes.string,
+      price: PropTypes.number,
+      category: PropTypes.string,
+      description: PropTypes.string,
+      image: PropTypes.string,
+      rating: PropTypes.shape({
+        rate: PropTypes.number,
+        count: PropTypes.number,
+      }),
+    })
+  ).isRequired,
+  addItemToCart: PropTypes.func.isRequired,
+};
