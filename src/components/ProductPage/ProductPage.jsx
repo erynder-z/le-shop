@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import "./ProductPage.css";
 
@@ -46,6 +46,9 @@ function ProductPage() {
 
       {!isFetching && (
         <div className="detail-card">
+          <Link to="/shop" className="backBtn">
+            &#8592; back to shop
+          </Link>
           <div className="product-header">
             <h3>{product.title}</h3>
           </div>
