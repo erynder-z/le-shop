@@ -6,7 +6,7 @@ import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import "./Shop.css";
 
 function Shop(props) {
-  const { showCart, cartItems } = props;
+  const { showCart, cartItems, removeItemFromCart } = props;
   const options = [
     { label: "All", value: "all" },
     { label: "Mens clothing", value: "men's clothing" },
@@ -50,7 +50,13 @@ function Shop(props) {
         value={category}
         onChange={handleChange}
       />
-      <ShoppingCart showCart={showCart} cartItems={cartItems} />
+      <ShoppingCart
+        showCart={showCart}
+        cartItems={cartItems}
+        removeItemFromCart={(itemID) => {
+          removeItemFromCart(itemID);
+        }}
+      />
       {isFetching && <h1>FETCHING DATA</h1>}
       {!isFetching &&
         (category === "all"
@@ -80,4 +86,5 @@ Shop.propTypes = {
       }),
     })
   ).isRequired,
+  removeItemFromCart: PropTypes.func.isRequired,
 };

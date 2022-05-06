@@ -15,6 +15,10 @@ function App() {
     setCartItems(() => [...cartItems, item]);
   };
 
+  const removeItemFromCart = (itemID) => {
+    setCartItems(() => cartItems.filter((item) => item.id !== itemID));
+  };
+
   const toggleShowCart = (e) => {
     if (showCart) {
       setShowCart(false);
@@ -31,7 +35,15 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route
           path="/shop"
-          element={<Shop showCart={showCart} cartItems={cartItems} />}
+          element={
+            <Shop
+              showCart={showCart}
+              cartItems={cartItems}
+              removeItemFromCart={(itemID) => {
+                removeItemFromCart(itemID);
+              }}
+            />
+          }
         />
         <Route path="/contact" element={<Contact />} />
         <Route
@@ -41,6 +53,9 @@ function App() {
               showCart={showCart}
               cartItems={cartItems}
               addItemToCart={addItemToCart}
+              removeItemFromCart={(itemID) => {
+                removeItemFromCart(itemID);
+              }}
             />
           }
         />

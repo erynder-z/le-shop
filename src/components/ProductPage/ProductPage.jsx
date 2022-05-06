@@ -5,7 +5,7 @@ import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import "./ProductPage.css";
 
 function ProductPage(props) {
-  const { showCart, cartItems, addItemToCart } = props;
+  const { showCart, cartItems, addItemToCart, removeItemFromCart } = props;
   const [product, setProduct] = useState({
     id: 1,
     title: "...",
@@ -48,7 +48,13 @@ function ProductPage(props) {
 
   return (
     <div className="product-page">
-      <ShoppingCart showCart={showCart} cartItems={cartItems} />
+      <ShoppingCart
+        showCart={showCart}
+        cartItems={cartItems}
+        removeItemFromCart={(itemID) => {
+          removeItemFromCart(itemID);
+        }}
+      />
       {isFetching && <h1>FETCHING DATA</h1>}
 
       {!isFetching && (
@@ -104,4 +110,5 @@ ProductPage.propTypes = {
     })
   ).isRequired,
   addItemToCart: PropTypes.func.isRequired,
+  removeItemFromCart: PropTypes.func.isRequired,
 };
