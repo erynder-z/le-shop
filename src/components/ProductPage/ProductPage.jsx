@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import "./ProductPage.css";
 
-function ProductPage() {
+function ProductPage(props) {
+  const { showCart } = props;
   const [product, setProduct] = useState({
     id: 1,
     title: "...",
@@ -42,6 +43,7 @@ function ProductPage() {
 
   return (
     <div className="product-page">
+      <ShoppingCart showCart={showCart} />
       {isFetching && <h1>FETCHING DATA</h1>}
 
       {!isFetching && (
