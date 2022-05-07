@@ -12,7 +12,20 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
 
   const addItemToCart = (item) => {
-    setCartItems(() => [...cartItems, item]);
+    let newItem = item;
+
+    const foundIndex = cartItems.findIndex((x) => x.id === item.id);
+    const foundItem = cartItems[foundIndex];
+
+    if (!foundItem) {
+      newItem.amount = 1;
+    } else {
+      setCartItems(cartItems.splice(foundIndex, 1));
+      foundItem.amount += 1;
+      newItem = foundItem;
+    }
+
+    setCartItems(() => [...cartItems, newItem]);
   };
 
   const removeItemFromCart = (itemID) => {

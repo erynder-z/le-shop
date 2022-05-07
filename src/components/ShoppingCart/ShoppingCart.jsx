@@ -12,6 +12,7 @@ function ShoppingCart(props) {
         <div className="cartItem-container" key={item.id}>
           <h3 className="cartItem-title">{item.title}</h3>
           <h3 className="cartItem-price">{item.price}</h3>
+          <h3 className="cartItem-amount">Amount: {item.amount}</h3>
           <button
             className="removeItemBtn"
             onClick={() => {
