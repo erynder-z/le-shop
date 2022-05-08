@@ -78,7 +78,10 @@ function ShoppingCart(props) {
           </button>
         </div>
       ))}
-      <h1 className="total-amount">TOTAL: {getTotalPrice()} €</h1>
+      {!cartItems.length > 0 && <h1 className="cart-empty">cart is empty</h1>}
+      {cartItems.length > 0 && (
+        <h1 className="total-amount">TOTAL: {getTotalPrice()} €</h1>
+      )}
     </div>
   );
 }
