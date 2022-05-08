@@ -23,8 +23,8 @@ function ProductPage(props) {
   const { id } = useParams();
   const formattedPrice = (Math.round(product.price * 100) / 100).toFixed(2);
 
-  const passItem = () => {
-    addItemToCart(product);
+  const passItem = (e) => {
+    addItemToCart(product, e);
   };
 
   useEffect(() => {
@@ -51,8 +51,8 @@ function ProductPage(props) {
       <ShoppingCart
         showCart={showCart}
         cartItems={cartItems}
-        removeItemFromCart={(itemID) => {
-          removeItemFromCart(itemID);
+        removeItemFromCart={(itemID, e) => {
+          removeItemFromCart(itemID, e);
         }}
       />
       {isFetching && <h1>FETCHING DATA</h1>}
@@ -78,8 +78,12 @@ function ProductPage(props) {
           </div>
           <button
             className="addToCartBtn"
-            onClick={passItem}
-            onKeyDown={passItem}
+            onClick={(e) => {
+              passItem(e);
+            }}
+            onKeyDown={(e) => {
+              passItem(e);
+            }}
             type="button"
             tabIndex={0}
           >

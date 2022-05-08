@@ -15,11 +15,11 @@ function ShoppingCart(props) {
           <h3 className="cartItem-amount">Amount: {item.amount}</h3>
           <button
             className="removeItemBtn"
-            onClick={() => {
-              removeItemFromCart(item.id);
+            onClick={(e) => {
+              removeItemFromCart(item.id, e);
             }}
-            onKeyDown={() => {
-              removeItemFromCart(item.id);
+            onKeyDown={(e) => {
+              removeItemFromCart(item.id, e);
             }}
             type="button"
             tabIndex={0}

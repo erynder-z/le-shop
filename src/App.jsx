@@ -11,7 +11,7 @@ function App() {
   const [showCart, setShowCart] = useState(false);
   const [cartItems, setCartItems] = useState([]);
 
-  const addItemToCart = (item) => {
+  const addItemToCart = (item, e) => {
     let newItem = item;
 
     const foundIndex = cartItems.findIndex((x) => x.id === item.id);
@@ -24,12 +24,13 @@ function App() {
       foundItem.amount += 1;
       newItem = foundItem;
     }
-
     setCartItems(() => [...cartItems, newItem]);
+    e.target.blur();
   };
 
-  const removeItemFromCart = (itemID) => {
+  const removeItemFromCart = (itemID, e) => {
     setCartItems(() => cartItems.filter((item) => item.id !== itemID));
+    e.target.blur();
   };
 
   const toggleShowCart = (e) => {
@@ -52,8 +53,8 @@ function App() {
             <Shop
               showCart={showCart}
               cartItems={cartItems}
-              removeItemFromCart={(itemID) => {
-                removeItemFromCart(itemID);
+              removeItemFromCart={(itemID, e) => {
+                removeItemFromCart(itemID, e);
               }}
             />
           }
@@ -65,9 +66,11 @@ function App() {
             <ProductPage
               showCart={showCart}
               cartItems={cartItems}
-              addItemToCart={addItemToCart}
-              removeItemFromCart={(itemID) => {
-                removeItemFromCart(itemID);
+              addItemToCart={(item, e) => {
+                addItemToCart(item, e);
+              }}
+              removeItemFromCart={(itemID, e) => {
+                removeItemFromCart(itemID, e);
               }}
             />
           }
