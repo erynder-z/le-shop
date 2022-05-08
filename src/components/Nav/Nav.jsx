@@ -1,10 +1,20 @@
 import React from "react";
-import PropTypes from "prop-types";
+import PropTypes, { shape } from "prop-types";
 import "./Nav.css";
 import { Link } from "react-router-dom";
 
 function Nav(props) {
-  const { toggleShowCart } = props;
+  const { toggleShowCart, cartItems } = props;
+
+  const getNumberOfItems = () => {
+    let totalItems = 0;
+    cartItems.forEach((item) => {
+      const { amount } = item;
+      totalItems += amount;
+    });
+    return totalItems;
+  };
+
   return (
     <nav className="navbar">
       <h3>Le Shop</h3>
@@ -23,7 +33,8 @@ function Nav(props) {
           role="button"
           tabIndex={0}
         >
-          Cart
+          {`Cart ${getNumberOfItems()}
+          `}
         </div>
       </ul>
     </nav>
@@ -34,4 +45,18 @@ export default Nav;
 
 Nav.propTypes = {
   toggleShowCart: PropTypes.func.isRequired,
+  cartItems: PropTypes.arrayOf(
+    shape({
+      id: PropTypes.number,
+      title: PropTypes.string,
+      price: PropTypes.number,
+      category: PropTypes.string,
+      description: PropTypes.string,
+      image: PropTypes.string,
+      rating: PropTypes.shape({
+        rate: PropTypes.number,
+        count: PropTypes.number,
+      }),
+    })
+  ).isRequired,
 };

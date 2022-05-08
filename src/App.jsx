@@ -74,7 +74,7 @@ function App() {
 
   return (
     <div className="app">
-      <Nav toggleShowCart={toggleShowCart} />
+      <Nav toggleShowCart={toggleShowCart} cartItems={cartItems} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
