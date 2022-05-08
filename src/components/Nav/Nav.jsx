@@ -33,8 +33,12 @@ function Nav(props) {
           role="button"
           tabIndex={0}
         >
-          {`Cart ${getNumberOfItems()}
-          `}
+          {/* {`Cart ${getNumberOfItems()}
+          `} */}
+          <div className="nav-cart-container">
+            Cart
+            <div className="bubble">{getNumberOfItems()}</div>
+          </div>
         </div>
       </ul>
     </nav>

@@ -1,0 +1,16 @@
+.ttl-container {
+  width: 100%;
+  border-top: solid 2px black;
+}
+
+.subttl-amount-container,
+.tax-amount-container,
+.ttl-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.subttl-amount-container,
+.tax-amount-container {
+  margin-bottom: 1rem;
+}

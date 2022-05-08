@@ -1,0 +1,37 @@
+.product-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detail-card {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 5rem;
+}
+
+.detail-card > .product-body > img {
+  width: 33%;
+  height: auto;
+}
+
+.backBtn {
+  text-decoration: none;
+  background-color: cadetblue;
+  color: crimson;
+  padding: 0.5rem;
+  font-size: 2rem;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.rating {
+  margin-bottom: 0;
+}
+
+.product-rating {
+  margin-top: 0;
+}

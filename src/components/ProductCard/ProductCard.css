@@ -10,21 +10,18 @@
   transition: 0.3s;
 }
 
-.product-card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+.product-card > a {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
 }
 
-.inView {
-  transition: all 0.5s;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: solid 2px red;
-  height: fit-content;
-  z-index: 10;
-  background-color: white;
-  transition: 200ms ease-in-out;
+.product-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 .product-header > h3 {
@@ -47,13 +44,6 @@
 .product-body > img {
   width: 50%;
   height: auto;
-}
-
-.closeBtn {
-  color: crimson;
-  align-self: flex-end;
-  font-size: 2rem;
-  cursor: pointer;
 }
 
 @media only screen and (max-width: 768px) {

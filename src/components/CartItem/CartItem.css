@@ -1,0 +1,41 @@
+.cartItem-container {
+  background-color: whitesmoke;
+  padding: 0 1rem;
+  border: solid 1px black;
+}
+
+.amount-container {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  height: 2rem;
+  margin: 0 0 1rem 0;
+}
+
+.amount-container > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.amount-container > button {
+  height: 1.5rem;
+  width: 1.5rem;
+  background-color: rgb(84, 84, 84);
+  color: whitesmoke;
+  border: none;
+  border-radius: none;
+}
+.amount-container > .removeItemBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  width: 4rem;
+  background-color: rgb(185, 18, 18);
+  color: whitesmoke;
+  border: none;
+  border-radius: none;
+  margin-left: auto;
+}

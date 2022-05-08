@@ -20,12 +20,17 @@ function TotalPrice(props) {
 
   return (
     <div className="price-container">
-      <h3 className="tax-amount">
-        Subtotal without VAT: {getTotalPrice().sub} €
-      </h3>
-      <h3 className="tax-amount">VAT: {getTotalPrice().tax} €</h3>
+      <div className="subttl-amount-container">
+        <div className="subttl-amount-text">Subtotal without VAT: </div>
+        <div className="subttl-amount-number">{getTotalPrice().sub} €</div>
+      </div>
+      <div className="tax-amount-container">
+        <div className="tax-amount-text">VAT: </div>
+        <div className="tax-amount-number">{getTotalPrice().tax} €</div>
+      </div>
       <div className="ttl-container">
-        <h1 className="total-amount">TOTAL: {getTotalPrice().ttl} €</h1>
+        <h1 className="total-amount-text">TOTAL: </h1>
+        <h1 className="total-amount-number">{getTotalPrice().ttl} €</h1>
       </div>
     </div>
   );
