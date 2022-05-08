@@ -27,6 +27,10 @@ function ShoppingCart(props) {
     };
   };
 
+  const checkout = () => {
+    alert("You have reached the end of the fake shop!");
+  };
+
   return (
     <div className={`shopping-cart ${showCart === true ? "show-cart" : null}`}>
       <h1>Shopping Cart</h1>
@@ -90,6 +94,15 @@ function ShoppingCart(props) {
           </h3>
           <h3 className="tax-amount">VAT: {getTotalPrice().tax} €</h3>
           <h1 className="total-amount">TOTAL: {getTotalPrice().ttl} €</h1>
+          <button
+            className="checkoutBtn"
+            onClick={checkout}
+            onKeyDown={checkout}
+            type="button"
+            tabIndex={0}
+          >
+            proceed to checkout
+          </button>
         </div>
       )}
     </div>
