@@ -40,8 +40,9 @@ function App() {
 
     setCartItems(cartItems.splice(foundIndex, 1));
     foundItem.amount += 1;
+    cartItems.splice(foundIndex, 0, foundItem);
 
-    setCartItems(() => [...cartItems, foundItem]);
+    setCartItems(() => [...cartItems]);
     e.target.blur();
   };
 
@@ -55,7 +56,8 @@ function App() {
     if (foundItem.amount === 0) {
       setCartItems(() => [...cartItems]);
     } else {
-      setCartItems(() => [...cartItems, foundItem]);
+      cartItems.splice(foundIndex, 0, foundItem);
+      setCartItems(() => [...cartItems]);
     }
 
     e.target.blur();
