@@ -11,13 +11,18 @@ function ShoppingCart(props) {
     decreaseAmount,
   } = props;
 
+  const formattedPrice = (price, amount) =>
+    ((Math.round(price * 100) / 100).toFixed(2) * amount).toFixed(2);
+
   return (
     <div className={`shopping-cart ${showCart === true ? "show-cart" : null}`}>
       <h1>Shopping Cart</h1>
       {cartItems.map((item) => (
         <div className="cartItem-container" key={item.id}>
           <h3 className="cartItem-title">{item.title}</h3>
-          <h3 className="cartItem-price">{item.price}</h3>
+          <h3 className="cartItem-price">
+            {formattedPrice(item.price, item.amount)} €
+          </h3>
           <div className="amount-container">
             {" "}
             <h3 className="cartItem-amount">Amount: {item.amount}</h3>
