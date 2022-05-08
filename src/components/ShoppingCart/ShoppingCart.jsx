@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes, { shape } from "prop-types";
+import CartItem from "../CartItem/CartItem";
 import "./ShoppingCart.css";
 
 function ShoppingCart(props) {
@@ -33,78 +34,46 @@ function ShoppingCart(props) {
 
   return (
     <div className={`shopping-cart ${showCart === true ? "show-cart" : null}`}>
-      <h1>Shopping Cart</h1>
-      {cartItems.map((item) => (
-        <div className="cartItem-container" key={item.id}>
-          <h3 className="cartItem-title">{item.title}</h3>
-          <h3 className="cartItem-price">
-            {formattedPrice(item.price, item.amount)} €
-          </h3>
-          <div className="amount-container">
-            {" "}
-            <h3 className="cartItem-amount">Amount: {item.amount}</h3>
+      <div className="cart-container">
+        <div className="cart-top-container">
+          <h1>Shopping Cart</h1>
+          <div className="items-grid">
+            <CartItem
+              cartItems={cartItems}
+              formattedPrice={formattedPrice}
+              increaseAmount={increaseAmount}
+              decreaseAmount={decreaseAmount}
+              removeItemFromCart={removeItemFromCart}
+            />
+          </div>
+          {!cartItems.length > 0 && (
+            <h1 className="cart-empty">cart is empty</h1>
+          )}
+        </div>
+
+        {cartItems.length > 0 && (
+          <div className="cart-bottom-container">
+            <div className="price-container">
+              <h3 className="tax-amount">
+                Subtotal without VAT: {getTotalPrice().sub} €
+              </h3>
+              <h3 className="tax-amount">VAT: {getTotalPrice().tax} €</h3>
+              <div className="ttl-container">
+                <h1 className="total-amount">TOTAL: {getTotalPrice().ttl} €</h1>
+              </div>
+            </div>
             <button
-              className="decreaseAmountBtn"
-              onClick={(e) => {
-                decreaseAmount(item.id, e);
-              }}
-              onKeyDown={(e) => {
-                decreaseAmount(item.id, e);
-              }}
+              className="checkoutBtn"
+              onClick={checkout}
+              onKeyDown={checkout}
               type="button"
               tabIndex={0}
             >
-              decrease
-            </button>
-            <button
-              className="increateAmountBtn"
-              onClick={(e) => {
-                increaseAmount(item.id, e);
-              }}
-              onKeyDown={(e) => {
-                increaseAmount(item.id, e);
-              }}
-              type="button"
-              tabIndex={0}
-            >
-              increase
+              proceed to checkout
             </button>
           </div>
-
-          <button
-            className="removeItemBtn"
-            onClick={(e) => {
-              removeItemFromCart(item.id, e);
-            }}
-            onKeyDown={(e) => {
-              removeItemFromCart(item.id, e);
-            }}
-            type="button"
-            tabIndex={0}
-          >
-            Delete item
-          </button>
-        </div>
-      ))}
-      {!cartItems.length > 0 && <h1 className="cart-empty">cart is empty</h1>}
-      {cartItems.length > 0 && (
-        <div className="cart-bottom-container">
-          <h3 className="tax-amount">
-            Subtotal without VAT: {getTotalPrice().sub} €
-          </h3>
-          <h3 className="tax-amount">VAT: {getTotalPrice().tax} €</h3>
-          <h1 className="total-amount">TOTAL: {getTotalPrice().ttl} €</h1>
-          <button
-            className="checkoutBtn"
-            onClick={checkout}
-            onKeyDown={checkout}
-            type="button"
-            tabIndex={0}
-          >
-            proceed to checkout
-          </button>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }
