@@ -34,6 +34,33 @@ function App() {
     e.target.blur();
   };
 
+  const increaseAmount = (itemID, e) => {
+    const foundIndex = cartItems.findIndex((x) => x.id === itemID);
+    const foundItem = cartItems[foundIndex];
+
+    setCartItems(cartItems.splice(foundIndex, 1));
+    foundItem.amount += 1;
+
+    setCartItems(() => [...cartItems, foundItem]);
+    e.target.blur();
+  };
+
+  const decreaseAmount = (itemID, e) => {
+    const foundIndex = cartItems.findIndex((x) => x.id === itemID);
+    const foundItem = cartItems[foundIndex];
+
+    setCartItems(cartItems.splice(foundIndex, 1));
+    foundItem.amount -= 1;
+
+    if (foundItem.amount === 0) {
+      setCartItems(() => [...cartItems]);
+    } else {
+      setCartItems(() => [...cartItems, foundItem]);
+    }
+
+    e.target.blur();
+  };
+
   const toggleShowCart = (e) => {
     if (showCart) {
       setShowCart(false);
@@ -82,6 +109,12 @@ function App() {
         cartItems={cartItems}
         removeItemFromCart={(itemID, e) => {
           removeItemFromCart(itemID, e);
+        }}
+        increaseAmount={(itemID, e) => {
+          increaseAmount(itemID, e);
+        }}
+        decreaseAmount={(itemID, e) => {
+          decreaseAmount(itemID, e);
         }}
       />
     </div>

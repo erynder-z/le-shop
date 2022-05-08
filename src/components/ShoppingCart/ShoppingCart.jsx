@@ -3,7 +3,13 @@ import PropTypes, { shape } from "prop-types";
 import "./ShoppingCart.css";
 
 function ShoppingCart(props) {
-  const { showCart, cartItems, removeItemFromCart } = props;
+  const {
+    showCart,
+    cartItems,
+    removeItemFromCart,
+    increaseAmount,
+    decreaseAmount,
+  } = props;
 
   return (
     <div className={`shopping-cart ${showCart === true ? "show-cart" : null}`}>
@@ -12,7 +18,37 @@ function ShoppingCart(props) {
         <div className="cartItem-container" key={item.id}>
           <h3 className="cartItem-title">{item.title}</h3>
           <h3 className="cartItem-price">{item.price}</h3>
-          <h3 className="cartItem-amount">Amount: {item.amount}</h3>
+          <div className="amount-container">
+            {" "}
+            <h3 className="cartItem-amount">Amount: {item.amount}</h3>
+            <button
+              className="decreaseAmountBtn"
+              onClick={(e) => {
+                decreaseAmount(item.id, e);
+              }}
+              onKeyDown={(e) => {
+                decreaseAmount(item.id, e);
+              }}
+              type="button"
+              tabIndex={0}
+            >
+              decrease
+            </button>
+            <button
+              className="increateAmountBtn"
+              onClick={(e) => {
+                increaseAmount(item.id, e);
+              }}
+              onKeyDown={(e) => {
+                increaseAmount(item.id, e);
+              }}
+              type="button"
+              tabIndex={0}
+            >
+              increase
+            </button>
+          </div>
+
           <button
             className="removeItemBtn"
             onClick={(e) => {
@@ -51,4 +87,6 @@ ShoppingCart.propTypes = {
     })
   ).isRequired,
   removeItemFromCart: PropTypes.func.isRequired,
+  increaseAmount: PropTypes.func.isRequired,
+  decreaseAmount: PropTypes.func.isRequired,
 };
