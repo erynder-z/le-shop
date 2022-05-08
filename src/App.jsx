@@ -6,6 +6,7 @@ import Home from "./components/Home/Home";
 import Shop from "./components/Shop/Shop";
 import Contact from "./components/Contact/Contact";
 import ProductPage from "./components/ProductPage/ProductPage";
+import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 
 function App() {
   const [showCart, setShowCart] = useState(false);
@@ -76,6 +77,13 @@ function App() {
           }
         />
       </Routes>
+      <ShoppingCart
+        showCart={showCart}
+        cartItems={cartItems}
+        removeItemFromCart={(itemID, e) => {
+          removeItemFromCart(itemID, e);
+        }}
+      />
     </div>
   );
 }

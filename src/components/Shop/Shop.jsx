@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
-import PropTypes, { shape } from "prop-types";
 import ProductCard from "../ProductCard/ProductCard";
 import Dropdown from "../Dropdown/Dropdown";
-import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import "./Shop.css";
 
-function Shop(props) {
-  const { showCart, cartItems, removeItemFromCart } = props;
+function Shop() {
   const options = [
     { label: "All", value: "all" },
     { label: "Mens clothing", value: "men's clothing" },
@@ -50,13 +47,6 @@ function Shop(props) {
         value={category}
         onChange={handleChange}
       />
-      <ShoppingCart
-        showCart={showCart}
-        cartItems={cartItems}
-        removeItemFromCart={(itemID) => {
-          removeItemFromCart(itemID);
-        }}
-      />
       {isFetching && <h1>FETCHING DATA</h1>}
       {!isFetching &&
         (category === "all"
@@ -69,22 +59,3 @@ function Shop(props) {
 }
 
 export default Shop;
-
-Shop.propTypes = {
-  showCart: PropTypes.bool.isRequired,
-  cartItems: PropTypes.arrayOf(
-    shape({
-      id: PropTypes.number,
-      title: PropTypes.string,
-      price: PropTypes.number,
-      category: PropTypes.string,
-      description: PropTypes.string,
-      image: PropTypes.string,
-      rating: PropTypes.shape({
-        rate: PropTypes.number,
-        count: PropTypes.number,
-      }),
-    })
-  ).isRequired,
-  removeItemFromCart: PropTypes.func.isRequired,
-};

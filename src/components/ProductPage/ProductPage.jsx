@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import PropTypes, { shape } from "prop-types";
-import ShoppingCart from "../ShoppingCart/ShoppingCart";
+import PropTypes from "prop-types";
 import "./ProductPage.css";
 
 function ProductPage(props) {
-  const { showCart, cartItems, addItemToCart, removeItemFromCart } = props;
+  const { addItemToCart } = props;
   const [product, setProduct] = useState({
     id: 1,
     title: "...",
@@ -48,13 +47,6 @@ function ProductPage(props) {
 
   return (
     <div className="product-page">
-      <ShoppingCart
-        showCart={showCart}
-        cartItems={cartItems}
-        removeItemFromCart={(itemID, e) => {
-          removeItemFromCart(itemID, e);
-        }}
-      />
       {isFetching && <h1>FETCHING DATA</h1>}
 
       {!isFetching && (
@@ -98,21 +90,5 @@ function ProductPage(props) {
 export default ProductPage;
 
 ProductPage.propTypes = {
-  showCart: PropTypes.bool.isRequired,
-  cartItems: PropTypes.arrayOf(
-    shape({
-      id: PropTypes.number,
-      title: PropTypes.string,
-      price: PropTypes.number,
-      category: PropTypes.string,
-      description: PropTypes.string,
-      image: PropTypes.string,
-      rating: PropTypes.shape({
-        rate: PropTypes.number,
-        count: PropTypes.number,
-      }),
-    })
-  ).isRequired,
   addItemToCart: PropTypes.func.isRequired,
-  removeItemFromCart: PropTypes.func.isRequired,
 };
