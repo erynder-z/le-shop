@@ -11,6 +11,7 @@ function ShoppingCart(props) {
     removeItemFromCart,
     increaseAmount,
     decreaseAmount,
+    toggleShowCart,
   } = props;
 
   const formattedPrice = (price, amount) =>
@@ -23,6 +24,17 @@ function ShoppingCart(props) {
   return (
     <div className={`shopping-cart ${showCart === true ? "show-cart" : null}`}>
       <div className="cart-container">
+        {showCart && (
+          <div
+            className="hide-cart"
+            onClick={toggleShowCart}
+            onKeyDown={toggleShowCart}
+            role="button"
+            tabIndex={0}
+          >
+            ❯
+          </div>
+        )}
         <div className="cart-top-container">
           <h1>Shopping Cart</h1>
           <div className="items-grid">
@@ -79,4 +91,5 @@ ShoppingCart.propTypes = {
   removeItemFromCart: PropTypes.func.isRequired,
   increaseAmount: PropTypes.func.isRequired,
   decreaseAmount: PropTypes.func.isRequired,
+  toggleShowCart: PropTypes.func.isRequired,
 };
