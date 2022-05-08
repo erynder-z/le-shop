@@ -20,7 +20,11 @@ function ShoppingCart(props) {
       const { price, amount } = item;
       totalPrice += price * amount;
     });
-    return totalPrice.toFixed(2);
+    return {
+      ttl: totalPrice.toFixed(2),
+      sub: (totalPrice - (totalPrice - totalPrice / 1.19)).toFixed(2),
+      tax: (totalPrice - totalPrice / 1.19).toFixed(2),
+    };
   };
 
   return (
@@ -80,7 +84,13 @@ function ShoppingCart(props) {
       ))}
       {!cartItems.length > 0 && <h1 className="cart-empty">cart is empty</h1>}
       {cartItems.length > 0 && (
-        <h1 className="total-amount">TOTAL: {getTotalPrice()} €</h1>
+        <div className="cart-bottom-container">
+          <h3 className="tax-amount">
+            Subtotal without VAT: {getTotalPrice().sub} €
+          </h3>
+          <h3 className="tax-amount">VAT: {getTotalPrice().tax} €</h3>
+          <h1 className="total-amount">TOTAL: {getTotalPrice().ttl} €</h1>
+        </div>
       )}
     </div>
   );
