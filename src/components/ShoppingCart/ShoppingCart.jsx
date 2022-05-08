@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes, { shape } from "prop-types";
 import CartItem from "../CartItem/CartItem";
+import TotalPrice from "../TotalPrice/TotalPrice";
 import "./ShoppingCart.css";
 
 function ShoppingCart(props) {
@@ -14,19 +15,6 @@ function ShoppingCart(props) {
 
   const formattedPrice = (price, amount) =>
     ((Math.round(price * 100) / 100).toFixed(2) * amount).toFixed(2);
-
-  const getTotalPrice = () => {
-    let totalPrice = 0;
-    cartItems.forEach((item) => {
-      const { price, amount } = item;
-      totalPrice += price * amount;
-    });
-    return {
-      ttl: totalPrice.toFixed(2),
-      sub: (totalPrice - (totalPrice - totalPrice / 1.19)).toFixed(2),
-      tax: (totalPrice - totalPrice / 1.19).toFixed(2),
-    };
-  };
 
   const checkout = () => {
     alert("You have reached the end of the fake shop!");
@@ -53,15 +41,7 @@ function ShoppingCart(props) {
 
         {cartItems.length > 0 && (
           <div className="cart-bottom-container">
-            <div className="price-container">
-              <h3 className="tax-amount">
-                Subtotal without VAT: {getTotalPrice().sub} €
-              </h3>
-              <h3 className="tax-amount">VAT: {getTotalPrice().tax} €</h3>
-              <div className="ttl-container">
-                <h1 className="total-amount">TOTAL: {getTotalPrice().ttl} €</h1>
-              </div>
-            </div>
+            <TotalPrice cartItems={cartItems} />
             <button
               className="checkoutBtn"
               onClick={checkout}
