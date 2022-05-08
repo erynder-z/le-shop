@@ -14,6 +14,15 @@ function ShoppingCart(props) {
   const formattedPrice = (price, amount) =>
     ((Math.round(price * 100) / 100).toFixed(2) * amount).toFixed(2);
 
+  const getTotalPrice = () => {
+    let totalPrice = 0;
+    cartItems.forEach((item) => {
+      const { price, amount } = item;
+      totalPrice += price * amount;
+    });
+    return totalPrice.toFixed(2);
+  };
+
   return (
     <div className={`shopping-cart ${showCart === true ? "show-cart" : null}`}>
       <h1>Shopping Cart</h1>
@@ -69,6 +78,7 @@ function ShoppingCart(props) {
           </button>
         </div>
       ))}
+      <h1 className="total-amount">TOTAL: {getTotalPrice()} €</h1>
     </div>
   );
 }
