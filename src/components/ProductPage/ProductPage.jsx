@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import Icon from "@mdi/react";
+import { mdiStar } from "@mdi/js";
 import "./ProductPage.css";
 
 function ProductPage(props) {
@@ -24,6 +26,18 @@ function ProductPage(props) {
 
   const passItem = (e) => {
     addItemToCart(product, e);
+  };
+
+  const getStars = () => {
+    const ratestars = Math.round(product.rating.rate);
+
+    const stars = [];
+    for (let i = 0; i < ratestars; i += 1) {
+      stars.push(
+        <Icon path={mdiStar} title="User Profile" size={1} color="red" />
+      );
+    }
+    return <div className="Stars">{stars}</div>;
   };
 
   useEffect(() => {
@@ -50,37 +64,40 @@ function ProductPage(props) {
       {isFetching && <h1>FETCHING DATA</h1>}
 
       {!isFetching && (
-        <div className="detail-card">
+        <div className="product-container">
           <Link to="/shop" className="backBtn">
             &#8592; back to shop
           </Link>
-          <div className="product-header">
-            <h3>{product.title}</h3>
+          <div className="detail-card">
+            <div className="product-header">
+              <h1>{product.title}</h1>
+            </div>
+            <div className="product-body">
+              <img src={product.image} alt="Product" />
+            </div>
+            <p className="product-description">{product.description}</p>
+            <h4 className="rating">User rating: {product.rating.rate} / 5.0</h4>
+            <div className="Stars">{getStars()}</div>
+            <div className="product-rating">
+              Based on {product.rating.count} reviews.{" "}
+            </div>
+            <div className="product-price">
+              <h2>Price: {formattedPrice}€</h2>
+            </div>
+            <button
+              className="addToCartBtn"
+              onClick={(e) => {
+                passItem(e);
+              }}
+              onKeyDown={(e) => {
+                passItem(e);
+              }}
+              type="button"
+              tabIndex={0}
+            >
+              Add to cart
+            </button>
           </div>
-          <div className="product-body">
-            <img src={product.image} alt="Product" />
-          </div>
-          <p className="product-description">{product.description}</p>
-          <h4 className="rating">User rating: {product.rating.rate} / 5.0</h4>
-          <div className="product-rating">
-            Based on {product.rating.count} reviews.{" "}
-          </div>
-          <div className="product-price">
-            <h4>Price: {formattedPrice}€</h4>
-          </div>
-          <button
-            className="addToCartBtn"
-            onClick={(e) => {
-              passItem(e);
-            }}
-            onKeyDown={(e) => {
-              passItem(e);
-            }}
-            type="button"
-            tabIndex={0}
-          >
-            Add to cart
-          </button>
         </div>
       )}
     </div>
