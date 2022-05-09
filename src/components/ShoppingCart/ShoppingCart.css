@@ -26,6 +26,14 @@
   text-align: center;
 }
 
+.cart-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin-top: 50%;
+}
+
 .shopping-cart.show-cart {
   z-index: 99;
   right: 0;
@@ -41,6 +49,7 @@
   height: 100%;
   flex-direction: column;
   justify-content: space-between;
+
   padding: 0 2rem;
 }
 

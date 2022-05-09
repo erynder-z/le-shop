@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes, { shape } from "prop-types";
+import Icon from "@mdi/react";
+import { mdiCartVariant } from "@mdi/js";
 import CartItem from "../CartItem/CartItem";
 import TotalPrice from "../TotalPrice/TotalPrice";
 import "./ShoppingCart.css";
@@ -51,7 +53,10 @@ function ShoppingCart(props) {
             />
           </div>
           {!cartItems.length > 0 && (
-            <h1 className="cart-empty">cart is empty</h1>
+            <h1 className="cart-empty">
+              {" "}
+              <Icon path={mdiCartVariant} size={2} /> is empty
+            </h1>
           )}
         </div>
 

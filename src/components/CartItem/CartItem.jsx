@@ -1,4 +1,6 @@
 import React from "react";
+import Icon from "@mdi/react";
+import { mdiTrashCanOutline, mdiPlus, mdiMinus } from "@mdi/js";
 import "./CartItem.css";
 
 function CartItem(props) {
@@ -29,7 +31,7 @@ function CartItem(props) {
           type="button"
           tabIndex={0}
         >
-          -
+          <Icon path={mdiMinus} size={0.75} />
         </button>{" "}
         <div className="cartItem-amount">{item.amount}</div>
         <button
@@ -43,7 +45,7 @@ function CartItem(props) {
           type="button"
           tabIndex={0}
         >
-          +
+          <Icon path={mdiPlus} size={0.75} />
         </button>
         <button
           className="removeItemBtn"
@@ -56,7 +58,7 @@ function CartItem(props) {
           type="button"
           tabIndex={0}
         >
-          Delete item
+          <Icon path={mdiTrashCanOutline} size={1} />
         </button>
       </div>
     </div>

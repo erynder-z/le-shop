@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Icon from "@mdi/react";
-import { mdiStar } from "@mdi/js";
+import { mdiStar, mdiSync } from "@mdi/js";
 import "./ProductPage.css";
 
 function ProductPage(props) {
@@ -33,15 +33,7 @@ function ProductPage(props) {
 
     const stars = [];
     for (let i = 0; i < ratestars; i += 1) {
-      stars.push(
-        <Icon
-          key={i}
-          path={mdiStar}
-          title="User Profile"
-          size={1}
-          color="red"
-        />
-      );
+      stars.push(<Icon key={i} path={mdiStar} size={1} color="red" />);
     }
     return <div className="Stars">{stars}</div>;
   };
@@ -67,7 +59,12 @@ function ProductPage(props) {
 
   return (
     <div className="product-page">
-      {isFetching && <h1>FETCHING DATA</h1>}
+      {isFetching && (
+        <div className="loading">
+          <Icon path={mdiSync} size={5} horizontal spin />
+          <p>getting items</p>
+        </div>
+      )}
 
       {!isFetching && (
         <div className="product-container">

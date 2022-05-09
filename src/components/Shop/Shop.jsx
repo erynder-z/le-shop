@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import Icon from "@mdi/react";
+import { mdiSync } from "@mdi/js";
 import ProductCard from "../ProductCard/ProductCard";
 import Dropdown from "../Dropdown/Dropdown";
 import "./Shop.css";
@@ -42,12 +44,17 @@ function Shop() {
   return (
     <div className="shop">
       <Dropdown
-        label="filter by category "
+        label="Filter products by category "
         options={options}
         value={category}
         onChange={handleChange}
       />
-      {isFetching && <h1>FETCHING DATA</h1>}
+      {isFetching && (
+        <div className="loading">
+          <Icon path={mdiSync} size={5} horizontal spin />
+          <p>getting items</p>
+        </div>
+      )}
       {!isFetching &&
         (category === "all"
           ? products.map((item) => <ProductCard key={item.id} product={item} />)

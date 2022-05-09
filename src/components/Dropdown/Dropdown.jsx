@@ -9,7 +9,11 @@ function Dropdown({ label, value, options, onChange }) {
         {label}
         <select id="categories" value={value} onChange={onChange}>
           {options.map((option) => (
-            <option key={option.value.toString()} value={option.value}>
+            <option
+              className="option"
+              key={option.value.toString()}
+              value={option.value}
+            >
               {option.label}
             </option>
           ))}

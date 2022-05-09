@@ -8,8 +8,8 @@
   display: flex;
   justify-items: center;
   align-items: center;
-  height: 2rem;
-  margin: 0 0 1rem 0;
+  /* height: 2rem; */
+  margin: 1rem 0;
 }
 
 .amount-container > * {
@@ -19,19 +19,22 @@
   padding: 0.5rem;
 }
 
+.cartItem-amount {
+  padding: 0 1rem;
+  font-size: larger;
+}
+
 .amount-container > button {
-  height: 1.5rem;
-  width: 1.5rem;
   background-color: rgb(84, 84, 84);
   color: whitesmoke;
   border: none;
   border-radius: none;
+  height: 2rem;
 }
 .amount-container > .removeItemBtn {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 2rem;
   width: 4rem;
   background-color: rgb(185, 18, 18);
   color: whitesmoke;

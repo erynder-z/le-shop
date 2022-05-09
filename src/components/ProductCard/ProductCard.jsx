@@ -8,9 +8,7 @@ function ProductCard(props) {
   const formattedPrice = (Math.round(product.price * 100) / 100).toFixed(2);
   return (
     <div className="product-card" key={product.id}>
-      <Link to={`/shop/${product.id}`}>
-        {/*  {product.title} */}
-
+      <div className="product-upper">
         <div className="product-header">
           <h3>{product.title}</h3>
         </div>
@@ -21,7 +19,12 @@ function ProductCard(props) {
         <div className="product-price">
           <h4>Price: {formattedPrice}€</h4>
         </div>
-      </Link>
+      </div>
+      <div className="product-lower">
+        <Link to={`/shop/${product.id}`}>
+          <div className="productDetails">Details</div>{" "}
+        </Link>{" "}
+      </div>
     </div>
   );
 }
