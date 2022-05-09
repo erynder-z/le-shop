@@ -27,8 +27,12 @@ function ShoppingCart(props) {
         {showCart && (
           <div
             className="hide-cart"
-            onClick={toggleShowCart}
-            onKeyDown={toggleShowCart}
+            onClick={(e) => {
+              toggleShowCart(e);
+            }}
+            onKeyDown={(e) => {
+              toggleShowCart(e);
+            }}
             role="button"
             tabIndex={0}
           >

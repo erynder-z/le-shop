@@ -118,8 +118,8 @@ function App() {
         decreaseAmount={(itemID, e) => {
           decreaseAmount(itemID, e);
         }}
-        toggleShowCart={() => {
-          toggleShowCart();
+        toggleShowCart={(e) => {
+          toggleShowCart(e);
         }}
       />
     </div>
