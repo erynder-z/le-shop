@@ -65,3 +65,16 @@
   border: none;
   border-radius: none;
 }
+
+@media only screen and (max-width: 768px) {
+  .detail-card {
+    padding: 0 1rem;
+    min-height: unset;
+    padding-bottom: 1rem;
+  }
+
+  .backBtn {
+    align-self: center;
+    margin-left: 0;
+  }
+}

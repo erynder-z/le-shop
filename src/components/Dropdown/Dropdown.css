@@ -18,3 +18,12 @@
   appearance: button;
   outline: none;
 }
+
+@media only screen and (max-width: 768px) {
+  .dropdown {
+    text-align: center;
+  }
+  #categories {
+    margin-top: 1rem;
+  }
+}

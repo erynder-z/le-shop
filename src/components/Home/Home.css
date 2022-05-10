@@ -1,0 +1,74 @@
+/* Style the video: 100% width and height to cover the entire window */
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 90vh;
+}
+
+#backvid {
+  position: fixed;
+  left: -5%;
+  top: 10%;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: 0;
+}
+
+.content {
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.content-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.content-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shopBtn {
+  font-size: 1.5rem;
+  padding: 10px;
+  border: solid 1px white;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+
+.shopBtn > a {
+  text-decoration: none;
+  color: white;
+}
+
+.shopBtn:hover {
+  background: #ddd;
+  color: black;
+}
+
+@media only screen and (max-width: 768px) {
+  #backvid {
+    left: -170%;
+  }
+
+  .content {
+    flex-direction: column;
+  }
+
+  .content-left {
+    align-items: center;
+    text-align: center;
+  }
+}
