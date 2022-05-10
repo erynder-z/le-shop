@@ -1,0 +1,76 @@
+.contact {
+  height: 90vh;
+}
+
+.contact-grid {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    " top top top"
+    "left middle right";
+}
+
+.top-card {
+  grid-area: top;
+  background-color: #4d1a3a;
+  color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-card > h1 {
+  padding: 2rem;
+}
+
+.left-card,
+.middle-card,
+.right-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.left-card-container,
+.middle-card-container,
+.right-card-container {
+  margin: auto;
+  padding-bottom: 1rem;
+}
+
+.left-card {
+  grid-area: left;
+  background-color: rgba(77, 26, 58, 0.3);
+}
+
+.middle-card {
+  grid-area: middle;
+  background-color: rgba(77, 26, 58, 0.4);
+}
+
+.right-card {
+  grid-area: right;
+  background-color: rgba(77, 26, 58, 0.5);
+}
+
+@media only screen and (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "top"
+      "left"
+      "middle"
+      "right";
+  }
+
+  .top-card > h1 {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  .left-card-container > h3,
+  .left-card-container > p {
+    margin: 0;
+  }
+}
