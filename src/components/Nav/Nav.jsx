@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes, { shape } from "prop-types";
 import "./Nav.css";
 import { Link } from "react-router-dom";
@@ -6,14 +6,23 @@ import { Link } from "react-router-dom";
 function Nav(props) {
   const { toggleShowCart, cartItems } = props;
 
+  const [clicked, setClicked] = useState(false);
+
   const getNumberOfItems = () => {
     let totalItems = 0;
     cartItems.forEach((item) => {
       const { amount } = item;
       totalItems += amount;
     });
+
     return totalItems;
   };
+
+  useEffect(() => {
+    setClicked(true);
+    const timer = setTimeout(() => setClicked(false), 100);
+    return () => clearTimeout(timer);
+  }, [cartItems]);
 
   return (
     <nav className="navbar">
@@ -33,11 +42,11 @@ function Nav(props) {
           role="button"
           tabIndex={0}
         >
-          {/* {`Cart ${getNumberOfItems()}
-          `} */}
           <div className="nav-cart-container">
-            Cart
-            <div className="bubble">{getNumberOfItems()}</div>
+            <span className="nav-cart-text">Cart</span>
+            <div className={`bubble ${clicked ? "enlarge" : null}`}>
+              {getNumberOfItems()}
+            </div>
           </div>
         </div>
       </ul>
