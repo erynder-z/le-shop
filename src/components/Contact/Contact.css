@@ -16,12 +16,20 @@
   background-color: #4d1a3a;
   color: whitesmoke;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .top-card > h1 {
   padding: 2rem;
+  width: 50%;
+  font-style: italic;
+  text-align: center;
+}
+.quote-author {
+  width: 50%;
+  text-align: right;
 }
 
 .left-card,
@@ -42,6 +50,7 @@
 .left-card {
   grid-area: left;
   background-color: rgba(77, 26, 58, 0.3);
+  text-align: center;
 }
 
 .middle-card {
@@ -52,6 +61,9 @@
 .right-card {
   grid-area: right;
   background-color: rgba(77, 26, 58, 0.5);
+}
+.right-card-container > a {
+  text-decoration: none;
 }
 
 @media only screen and (max-width: 768px) {

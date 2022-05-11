@@ -8,7 +8,6 @@
   display: flex;
   justify-items: center;
   align-items: center;
-  /* height: 2rem; */
   margin: 1rem 0;
 }
 
@@ -30,6 +29,7 @@
   border: none;
   border-radius: none;
   height: 2rem;
+  cursor: pointer;
 }
 .amount-container > .removeItemBtn {
   display: flex;
@@ -41,4 +41,5 @@
   border: none;
   border-radius: none;
   margin-left: auto;
+  cursor: pointer;
 }

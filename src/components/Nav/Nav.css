@@ -26,7 +26,7 @@
 }
 
 .nav-links > a:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
   transition: all 0.5s;
 }
 
@@ -40,6 +40,11 @@
   align-items: center;
 }
 
+.nav-cart-text:hover {
+  transform: scale(1.2);
+  transition: all 0.5s;
+}
+
 .bubble {
   display: flex;
   justify-content: center;
@@ -51,6 +56,12 @@
   width: 2rem;
   border-radius: 50%;
   font-weight: bolder;
+  transition: all 100ms ease-in-out;
+}
+
+.enlarge {
+  transition: all 100ms ease-in-out;
+  transform: scale(150%);
 }
 
 @media only screen and (max-width: 768px) {

@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import Icon from "@mdi/react";
+import { mdiInformationOutline } from "@mdi/js";
 import "./ProductCard.css";
 
 function ProductCard(props) {
@@ -22,7 +24,14 @@ function ProductCard(props) {
       </div>
       <div className="product-lower">
         <Link to={`/shop/${product.id}`}>
-          <div className="productDetails">Details</div>{" "}
+          <div className="productDetails">
+            Details{" "}
+            <Icon
+              className="detailsIcn"
+              path={mdiInformationOutline}
+              size={0.9}
+            />
+          </div>{" "}
         </Link>{" "}
       </div>
     </div>

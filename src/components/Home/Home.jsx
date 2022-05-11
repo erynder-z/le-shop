@@ -12,11 +12,7 @@ function Home() {
       <div className="content">
         <div className="content-left">
           <h1>Welcome to Le Shop!</h1>
-
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod,
-            necessitatibus?
-          </p>
+          <p>Selected lorem ipsum items since 2021.</p>
         </div>
         <div className="content-right">
           <div className="shopBtn">

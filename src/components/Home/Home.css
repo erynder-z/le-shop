@@ -54,8 +54,7 @@
 }
 
 .shopBtn:hover {
-  background: #ddd;
-  color: black;
+  background: #4d1a3a;
 }
 
 @media only screen and (max-width: 768px) {

@@ -8,11 +8,8 @@ function Contact() {
     <div className="contact">
       <div className="contact-grid">
         <div className="top-card">
-          <h1>
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Reprehenderit, praesentium. A illum eligendi itaque non.
-          </h1>
+          <h1> “Belief creates the actual fact.”</h1>
+          <h3 className="quote-author">-- William James</h3>
         </div>
         <div className="left-card">
           <h1>Address</h1>
@@ -34,8 +31,15 @@ function Contact() {
         <div className="right-card">
           <h1>Creator</h1>
           <div className="right-card-container">
-            <Icon path={mdiGithub} size={3} />
-            <p>Erynder-Z</p>
+            <a
+              href="https://github.com/erynder-z"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {" "}
+              <Icon path={mdiGithub} size={3} color="black" />
+              <p>Erynder-Z</p>
+            </a>
           </div>
         </div>
       </div>

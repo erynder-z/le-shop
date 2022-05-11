@@ -65,8 +65,12 @@
   align-items: center;
   height: 3rem;
   width: 100%;
-  background-color: rgb(20, 20, 20);
+  background-color: rgb(50, 50, 50);
   color: whitesmoke;
+}
+
+.detailsIcn {
+  padding-left: 0.5rem;
 }
 
 @media only screen and (max-width: 768px) {

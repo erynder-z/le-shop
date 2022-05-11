@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Icon from "@mdi/react";
-import { mdiStar, mdiSync } from "@mdi/js";
+import { mdiStar, mdiSync, mdiCartArrowDown } from "@mdi/js";
 import "./ProductPage.css";
 
 function ProductPage(props) {
@@ -98,7 +98,8 @@ function ProductPage(props) {
               type="button"
               tabIndex={0}
             >
-              Add to cart
+              Add to cart{" "}
+              <Icon className="cartIcn" path={mdiCartArrowDown} size={1} />
             </button>
           </div>
         </div>

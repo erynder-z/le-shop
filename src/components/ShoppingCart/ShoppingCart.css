@@ -66,6 +66,12 @@
   color: whitesmoke;
   border: none;
   border-radius: none;
+  cursor: pointer;
+}
+
+.checkoutBtn:hover {
+  filter: invert(100%);
+  transition: all 0.5s;
 }
 
 @media only screen and (max-width: 768px) {
