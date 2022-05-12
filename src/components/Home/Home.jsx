@@ -6,7 +6,14 @@ import "./Home.css";
 function Home() {
   return (
     <div className="home">
-      <video className="background.video" autoPlay muted loop id="backvid">
+      <video
+        className="background.video"
+        aria-label="video"
+        autoPlay
+        muted
+        loop
+        id="backvid"
+      >
         <source src={video} type="video/mp4" />
       </video>
       <div className="content">
