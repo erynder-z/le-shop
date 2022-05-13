@@ -26,21 +26,20 @@ function ShoppingCart(props) {
   return (
     <div className={`shopping-cart ${showCart === true ? "show-cart" : null}`}>
       <div className="cart-container">
-        {showCart && (
-          <div
-            className="hide-cart"
-            onClick={(e) => {
-              toggleShowCart(e);
-            }}
-            onKeyDown={(e) => {
-              toggleShowCart(e);
-            }}
-            role="button"
-            tabIndex={0}
-          >
-            ❯
-          </div>
-        )}
+        <div
+          className="hide-cart"
+          onClick={(e) => {
+            toggleShowCart(e);
+          }}
+          onKeyDown={(e) => {
+            toggleShowCart(e);
+          }}
+          role="button"
+          tabIndex={0}
+        >
+          ❯
+        </div>
+
         <div className="cart-top-container">
           <h1>Shopping Cart</h1>
           <div className="items-grid">
