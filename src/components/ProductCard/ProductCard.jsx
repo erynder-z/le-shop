@@ -15,7 +15,7 @@ function ProductCard(props) {
           <h3>{product.title}</h3>
         </div>
         <div className="product-body">
-          <img src={product.image} alt="Product" />
+          <img src={product.image} alt={product.image.toString()} />
         </div>
 
         <div className="product-price">
