@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/le-shop/static/css/main.58fc3809.css",
+    "main.css": "/le-shop/static/css/main.901792c1.css",
     "main.js": "/le-shop/static/js/main.07239cbb.js",
     "static/media/backvid.mp4": "/le-shop/static/media/backvid.7e01f73bc0db0a6a06dc.mp4",
     "index.html": "/le-shop/index.html",
-    "main.58fc3809.css.map": "/le-shop/static/css/main.58fc3809.css.map",
+    "main.901792c1.css.map": "/le-shop/static/css/main.901792c1.css.map",
     "main.07239cbb.js.map": "/le-shop/static/js/main.07239cbb.js.map"
   },
   "entrypoints": [
-    "static/css/main.58fc3809.css",
+    "static/css/main.901792c1.css",
     "static/js/main.07239cbb.js"
   ]
 }
