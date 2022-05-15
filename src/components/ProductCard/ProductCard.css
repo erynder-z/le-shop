@@ -69,6 +69,10 @@
   color: whitesmoke;
 }
 
+.product-lower > a {
+  text-decoration: none;
+}
+
 .detailsIcn {
   padding-left: 0.5rem;
 }
