@@ -33,7 +33,9 @@ function ProductPage(props) {
 
     const stars = [];
     for (let i = 0; i < ratestars; i += 1) {
-      stars.push(<Icon key={i} path={mdiStar} size={1} color="red" />);
+      stars.push(
+        <Icon key={i} path={mdiStar} size={1} color="red" data-testid="star" />
+      );
     }
     return <div className="Stars">{stars}</div>;
   };
